@@ -1,0 +1,68 @@
+@import "../../styles/media-mixin";
+
+.genre-header {
+  background-color: #121212;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.back-link {
+  text-decoration: none;
+  padding-left: 10px;
+  padding-right: 30px;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.right {
+  padding-right: 20px;
+}
+
+.likes {
+  position: relative;
+  display: inline-block;
+
+  &-counter {
+    position: absolute;
+    top: -12px;
+    right: -17px;
+    font-size: 1.4rem;
+    font-weight: bold;
+    background-color: #3e50b4;
+    padding: 4px;
+    border-radius: 50%;
+  }
+}
+
+.search {
+  input {
+    border-radius: 5px;
+    height: 30px;
+    width: 270px;
+  }
+}
+
+@include media-max(768px) {
+  .search {
+    input {
+      width: 180px;
+    }
+  }
+}
+
+@include media-max(375px) {
+  .genre-header {
+    padding: 20px;
+  }
+
+  .back-link {
+    padding-left: 0;
+  }
+
+  .right {
+    padding-right: 0;
+  }
+}
