@@ -1,5 +1,6 @@
 @import './styles/media-mixin.scss';
 @import './styles/layout.scss';
+@import './styles/forms.scss';
 
 * {
   margin: 0;
@@ -7,10 +8,15 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
-  background-color: #000;
+  background-color: #191919;
   color: #fff;
   font-family: helvetica, sans-serif;
+  font-size: 1.5rem;
 }
 
 a {

@@ -1,0 +1,13 @@
+fieldset {
+  margin: 0;
+  border: 0;
+}
+
+input {
+  border: 0;
+  box-shadow: none;
+  padding: 0 5px;
+  &:focus {
+    outline-color: #3e50b4;
+  }
+}
