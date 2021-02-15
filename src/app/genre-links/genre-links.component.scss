@@ -1,0 +1,63 @@
+@import "../../styles/media-mixin";
+
+.genre {
+  &-list {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 20px;
+  }
+
+  &-wrapper {
+    width: 33.33%;
+    padding: 0 10px 20px;
+    line-height: 0;
+  }
+
+  &-link {
+    position: relative;
+    display: inline-block;
+    line-height: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    text-decoration: none;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+
+    h3 {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      line-height: 1;
+      z-index: 2;
+      font-weight: normal;
+    }
+
+    img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform .3s linear;
+    }
+  }
+}
+
+@include media-max(1024px) {
+  .genre {
+    &-wrapper {
+      width: 50%;
+    }
+  }
+}
+
+@include media-max(640px) {
+  .genre {
+    &-wrapper {
+      width: 100%;
+    }
+  }
+}
