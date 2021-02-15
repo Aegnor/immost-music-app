@@ -1,1 +1,37 @@
-/* You can add global styles to this file, and also import other style files */
+@import './styles/media-mixin.scss';
+@import './styles/layout.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: helvetica, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.visual-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
