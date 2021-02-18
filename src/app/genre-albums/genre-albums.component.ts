@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
+import {Component, OnInit} from '@angular/core';
+import {Location} from '@angular/common';
+import {ActivatedRoute, Params} from '@angular/router';
+import {GenresService} from '../genres.service';
 
 @Component({
   selector: 'app-genre-albums',
@@ -8,9 +10,18 @@ import { Location } from '@angular/common';
 })
 export class GenreAlbumsComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  albums = [];
+
+  constructor(private location: Location, private route: ActivatedRoute, private genreService: GenresService) {
+  }
 
   ngOnInit(): void {
+    this.route.params.subscribe((params: Params) => {
+      this.genreService.fetchAllByGenre(params.tag)
+        .subscribe(genre => {
+          this.albums = genre.albums.album;
+        });
+    });
   }
 
   goBack(): void {
