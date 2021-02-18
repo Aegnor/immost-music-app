@@ -1,5 +1,5 @@
 <h2 class="visual-hidden">Genres</h2>
-<ul class="genre-list">
+<ul class="genre-list list-row">
   <li class="genre-wrapper" *ngFor="let genre of genresArray">
     <a [routerLink]="['/genre-albums', genre.name | lowercase]" class="genre-link">
       <h3>{{genre.name}}</h3>
