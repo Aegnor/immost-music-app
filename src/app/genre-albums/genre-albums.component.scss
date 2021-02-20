@@ -8,7 +8,7 @@
 
 .back-link {
   text-decoration: none;
-  padding-left: 10px;
+  padding-left: 20px;
   padding-right: 30px;
   cursor: pointer;
 
@@ -28,7 +28,10 @@
   &-counter {
     position: absolute;
     top: -12px;
-    right: -17px;
+    right: -15px;
+    min-height: 20px;
+    min-width: 20px;
+    text-align: center;
     font-size: 1.4rem;
     font-weight: bold;
     background-color: #3e50b4;
@@ -45,10 +48,27 @@
   }
 }
 
+.album {
+  &-container {
+    padding: 0 10px;
+  }
+
+  &-wrapper {
+    width: 20%;
+    padding: 20px;
+  }
+}
+
 @include media-max(768px) {
   .search {
     input {
       width: 180px;
+    }
+  }
+
+  .album {
+    &-item {
+      width: 33.33%;
     }
   }
 }
@@ -56,6 +76,12 @@
 @include media-max(375px) {
   .genre-header {
     padding: 20px;
+  }
+
+  .album {
+    &-item {
+      width: 100%;
+    }
   }
 
   .back-link {
