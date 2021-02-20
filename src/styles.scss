@@ -6,6 +6,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+
+  &:focus {
+    outline: 0;
+  }
+
+  &:focus-visible {
+    outline: 1px solid;
+  }
 }
 
 html {
@@ -22,6 +30,13 @@ body {
 a {
   color: inherit;
   text-decoration: underline;
+}
+
+button {
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  cursor: pointer;
 }
 
 ul {

@@ -1,3 +1,4 @@
+// Need Improve, right now it is only makes @media query
 @mixin media-max($size) {
   @media screen and (max-width: $size) {
     @content;
