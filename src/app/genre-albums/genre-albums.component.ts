@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {ActivatedRoute, Params} from '@angular/router';
 import {GenresService} from '../genres.service';
+import {LikesService} from '../likes.service';
 
 @Component({
   selector: 'app-genre-albums',
@@ -10,12 +11,15 @@ import {GenresService} from '../genres.service';
 })
 export class GenreAlbumsComponent implements OnInit {
 
-  albums = [];
+  search = '';
+  albums: {}[] = [];
 
-  constructor(private location: Location, private route: ActivatedRoute, private genreService: GenresService) {
+  constructor(private location: Location, private route: ActivatedRoute, private genreService: GenresService, public likes: LikesService) {
   }
 
   ngOnInit(): void {
+    this.likes.getLikesArrayFromLocalStorage();
+
     this.route.params.subscribe((params: Params) => {
       this.genreService.fetchAllByGenre(params.tag)
         .subscribe(genre => {
