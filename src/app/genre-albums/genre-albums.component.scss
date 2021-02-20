@@ -59,6 +59,15 @@
   }
 }
 
+@include media-max(1024px) {
+  .album {
+    &-wrapper {
+      padding: 10px;
+      width: 33.33%;
+    }
+  }
+}
+
 @include media-max(768px) {
   .search {
     input {
@@ -67,19 +76,20 @@
   }
 
   .album {
-    &-item {
-      width: 33.33%;
+    &-wrapper {
+      padding: 5px;
+      width: 50%;
     }
   }
 }
 
-@include media-max(375px) {
+@include media-max(480px) {
   .genre-header {
     padding: 20px;
   }
 
   .album {
-    &-item {
+    &-wrapper {
       width: 100%;
     }
   }
