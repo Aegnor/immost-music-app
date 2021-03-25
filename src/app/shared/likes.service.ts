@@ -23,7 +23,7 @@ export class LikesService {
   isLiked(name: string): boolean {
     const candidate = this.likesArray.find(item => item.name === name);
 
-    return candidate ? true : false;
+    return !!candidate;
   }
 
   addToLikes(item: {
