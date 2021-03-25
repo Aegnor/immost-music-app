@@ -20,17 +20,14 @@ export class LikesService {
     }
   }
 
-  isLiked(name: string): boolean {
+  isLiked(name: string = ''): boolean {
     const candidate = this.likesArray.find(item => item.name === name)
 
     return !!candidate
   }
 
-  addToLikes(item: {
-    isLiked: boolean;
-    name: string
-  }): void {
-    this.likesArray.push(item)
+  addToLikes(song: any): void {
+    this.likesArray.push(song)
 
     localStorage.setItem('likes', JSON.stringify(this.likesArray))
   }
