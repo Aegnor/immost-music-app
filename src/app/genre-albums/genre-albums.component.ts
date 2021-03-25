@@ -1,6 +1,7 @@
-import {Component, OnInit} from '@angular/core'
+import {Component, OnDestroy, OnInit} from '@angular/core'
 import {Location} from '@angular/common'
 import {ActivatedRoute, Params} from '@angular/router'
+import {Subscription} from 'rxjs'
 
 import {GenresService} from '../shared/genres.service'
 import {LikesService} from '../shared/likes.service'
@@ -10,10 +11,12 @@ import {LikesService} from '../shared/likes.service'
   templateUrl: './genre-albums.component.html',
   styleUrls: ['./genre-albums.component.scss']
 })
-export class GenreAlbumsComponent implements OnInit {
+export class GenreAlbumsComponent implements OnInit, OnDestroy {
 
   search = ''
-  albums: {}[] = []
+  albums: any | undefined = []
+  routeSubscriber: Subscription | undefined
+  genreServiceFetchSubscriber: Subscription | undefined
 
   constructor(
     private location: Location,
@@ -23,14 +26,22 @@ export class GenreAlbumsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    let paramsTag = ''
     this.likes.getLikesArrayFromLocalStorage()
 
-    this.route.params.subscribe((params: Params) => {
-      this.genreService.fetchAllByGenre(params.tag)
-        .subscribe(genre => {
-          this.albums = genre.albums.album
-        })
+    this.routeSubscriber = this.route.params.subscribe((params: Params) => {
+      paramsTag = params.tag
     })
+
+    this.genreServiceFetchSubscriber = this.genreService.fetchAllByGenre(paramsTag)
+      .subscribe(genre => {
+        this.albums = genre.albums.album
+      })
+  }
+
+  ngOnDestroy(): void {
+    this.routeSubscriber?.unsubscribe()
+    this.genreServiceFetchSubscriber?.unsubscribe()
   }
 
   goBack(): void {
