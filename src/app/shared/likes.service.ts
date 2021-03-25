@@ -1,45 +1,45 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from '@angular/core'
 
 @Injectable({providedIn: 'root'})
 export class LikesService {
   likesArray: {
     name: string;
-  }[] = [];
+  }[] = []
 
   constructor() {
   }
 
   getLikesLength(): number {
-    return this.likesArray.length;
+    return this.likesArray.length
   }
 
   getLikesArrayFromLocalStorage(): any {
-    const likes = localStorage.getItem('likes');
+    const likes = localStorage.getItem('likes')
     if (likes != null) {
-      return this.likesArray = JSON.parse(likes);
+      return this.likesArray = JSON.parse(likes)
     }
   }
 
   isLiked(name: string): boolean {
-    const candidate = this.likesArray.find(item => item.name === name);
+    const candidate = this.likesArray.find(item => item.name === name)
 
-    return !!candidate;
+    return !!candidate
   }
 
   addToLikes(item: {
     isLiked: boolean;
     name: string
   }): void {
-      this.likesArray.push(item);
+    this.likesArray.push(item)
 
-      localStorage.setItem('likes', JSON.stringify(this.likesArray));
+    localStorage.setItem('likes', JSON.stringify(this.likesArray))
   }
 
   removeFromLikes(name: string): void {
-    const candidateIdx = this.likesArray.findIndex(item => item.name === name);
+    const candidateIdx = this.likesArray.findIndex(item => item.name === name)
 
-    this.likesArray.splice(candidateIdx, 1);
+    this.likesArray.splice(candidateIdx, 1)
 
-    localStorage.setItem('likes', JSON.stringify(this.likesArray));
+    localStorage.setItem('likes', JSON.stringify(this.likesArray))
   }
 }
