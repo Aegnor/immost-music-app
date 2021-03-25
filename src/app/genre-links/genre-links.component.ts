@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core'
 
 @Component({
   selector: 'app-genre-link',
   templateUrl: './genre-links.component.html',
   styleUrls: ['./genre-links.component.scss']
 })
-export class GenreLinksComponent implements OnInit {
+export class GenreLinksComponent {
   genresArray = [
     {
       name: 'Rock',
@@ -37,11 +37,9 @@ export class GenreLinksComponent implements OnInit {
       imgSrc: '../../assets/images/6.webp',
       imgAlt: 'Two kids'
     }
-  ];
+  ]
 
   constructor() {
   }
 
-  ngOnInit(): void {
-  }
 }
