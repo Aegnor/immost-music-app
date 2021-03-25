@@ -9,22 +9,15 @@ import {LikesService} from '../shared/likes.service'
 })
 export class AlbumLinkComponent {
 
-  @Input() album: {} | undefined
+  @Input() album: any | undefined
   isLiked = false
 
   constructor(public likes: LikesService) {
   }
 
-  addLikesHandler(item: {
-    name: string,
-    isLiked: boolean
-  }): void {
-    if (!this.likes.isLiked(item.name)) {
-      this.isLiked = item.isLiked = true
-      this.likes.addToLikes(item)
-    } else {
-      this.isLiked = item.isLiked = false
-      this.likes.removeFromLikes(item.name)
-    }
+  addLikesHandler(song: any): void {
+    !this.likes.isLiked(song.name) ? this.likes.addToLikes(song) : this.likes.removeFromLikes(song)
+
+    this.isLiked = !this.isLiked
   }
 }
