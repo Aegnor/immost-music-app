@@ -1,9 +1,9 @@
 <li class="album-item">
   <div class="list-item-rounded" role="button" (click)="addLikesHandler(album)">
     <div class="album-content">
-      <h2 class="song-name">{{album.name}}</h2>
-      <span class="song-artist">{{album.artist.name}}</span>
-      <svg *ngIf="likes.isLiked(album.name) || isLiked; else heartOutline"
+      <h2 class="song-name">{{album?.name}}</h2>
+      <span class="song-artist">{{album?.artist?.name}}</span>
+      <svg *ngIf="likes.isLiked(album?.name) || isLiked; else heartOutline"
            fill="#fff"
            height="24px"
            width="24px"
@@ -31,6 +31,6 @@
         </svg>
       </ng-template>
     </div>
-    <img alt="{{album.name}}" src="{{album.image[3]['#text']}}">
+    <img alt="{{album?.name}}" src="{{album?.image[3]['#text']}}">
   </div>
 </li>
