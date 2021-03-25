@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Location} from '@angular/common';
-import {ActivatedRoute, Params} from '@angular/router';
-import {GenresService} from '../genres.service';
-import {LikesService} from '../likes.service';
+import {Component, OnInit} from '@angular/core'
+import {Location} from '@angular/common'
+import {ActivatedRoute, Params} from '@angular/router'
+
+import {GenresService} from '../shared/genres.service'
+import {LikesService} from '../shared/likes.service'
 
 @Component({
   selector: 'app-genre-albums',
@@ -11,24 +12,28 @@ import {LikesService} from '../likes.service';
 })
 export class GenreAlbumsComponent implements OnInit {
 
-  search = '';
-  albums: {}[] = [];
+  search = ''
+  albums: {}[] = []
 
-  constructor(private location: Location, private route: ActivatedRoute, private genreService: GenresService, public likes: LikesService) {
-  }
+  constructor(
+    private location: Location,
+    private route: ActivatedRoute,
+    private genreService: GenresService,
+    public likes: LikesService
+  ) {}
 
   ngOnInit(): void {
-    this.likes.getLikesArrayFromLocalStorage();
+    this.likes.getLikesArrayFromLocalStorage()
 
     this.route.params.subscribe((params: Params) => {
       this.genreService.fetchAllByGenre(params.tag)
         .subscribe(genre => {
-          this.albums = genre.albums.album;
-        });
-    });
+          this.albums = genre.albums.album
+        })
+    })
   }
 
   goBack(): void {
-    this.location.back();
+    this.location.back()
   }
 }
